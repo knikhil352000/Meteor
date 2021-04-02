@@ -1,6 +1,10 @@
 .app {
-  margin: auto;
-  height: 100px;
-  width: 100px;
-  background-color: red;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  height: 100vh;;
+  background-image: url("https://assets.quizlet.com/a/j/dist/i/gravity/stars.a506a5767df7ec3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
