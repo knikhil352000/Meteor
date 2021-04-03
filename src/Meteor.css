@@ -1,12 +1,14 @@
 .meteor {
     display: flex;
-    height: 300px;
-    width: 300px;
+    height: 20rem;
+    width: 20rem;
     background-image: url(https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/BlueLargeAsteroid@2x.848b4a45b4afee5.png);
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+
 }
 
 .meteor__question {

@@ -2,9 +2,20 @@
   width: 100%;
   display: grid;
   place-items: center;
+  position: relative;
   height: 100vh;;
   background-image: url("https://assets.quizlet.com/a/j/dist/i/gravity/stars.a506a5767df7ec3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: hidden;
+}
 
+.app__image {
+  width: 100%;
+  height: 15rem;
+  position: absolute;
+  bottom: 0;
+  background-image: url("https://assets.quizlet.com/a/j/dist/i/gravity/planets/level1-placeholder.0ebff6dd4702336.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

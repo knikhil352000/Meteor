@@ -1,25 +1,30 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Meteor.css'
-const Meteor = () => {
+const Meteor = ({quiz}) => {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
 
-    const xValue = [-windowWidth / 3, -windowWidth / 4, -windowWidth / 5, windowWidth / 3, windowWidth / 4, windowWidth / 5];
+    console.log(windowWidth);
+    const [animationComplete, setAnimationComplete] = useState(true);
+    const click = () => {
+      console.log(animationComplete);
+    }
+    const xValue = [-windowWidth / 3, -windowWidth / 4, -windowWidth / 5, windowWidth / 3, windowWidth / 4, windowWidth / 5, 0];
+    setTimeout(() => {
+        setAnimationComplete(false)
+    }, 5000);
     const initialVariant = {
         hidden: {
             opacity: 0.8,
-            x: xValue[Math.floor(Math.random() * 7)],
+            x: xValue[Math.floor(Math.random() * 8)],
             y: - windowHeight / 2 - 100,
         },
         show: {
             opacity: 1,
-            y: windowHeight / 2 - 200,
-            transitionEnd: {
-                rotate: 180
-            },
+            y: windowHeight,
             transition: {
-                duration: 5,
+                duration: 15,
                 ease: 'linear',
             },
         },
@@ -30,10 +35,11 @@ const Meteor = () => {
             variants={initialVariant}
             initial='hidden'
             animate='show'
+            onClick={click}
         >
             <div className='meteor__question'>
-                <h3>What is powerhouse of cell?
-                    Mitochondria is powerhouse of cell
+                <h3>{quiz}
+
                 </h3>
             </div>
         </motion.div>
