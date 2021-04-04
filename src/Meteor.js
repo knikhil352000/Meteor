@@ -4,8 +4,6 @@ import './Meteor.css'
 const Meteor = ({quiz}) => {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
-
-    console.log(windowWidth);
     const [animationComplete, setAnimationComplete] = useState(true);
     const click = () => {
       console.log(animationComplete);
@@ -24,25 +22,24 @@ const Meteor = ({quiz}) => {
             opacity: 1,
             y: windowHeight,
             transition: {
-                duration: 15,
+                duration: 25,
                 ease: 'linear',
             },
         },
     }
     return (
-        <motion.div 
-            className='meteor' 
-            variants={initialVariant}
-            initial='hidden'
-            animate='show'
-            onClick={click}
-        >
-            <div className='meteor__question'>
-                <h3>{quiz}
-
-                </h3>
-            </div>
-        </motion.div>
+    <motion.div 
+        className='meteor' 
+        variants={initialVariant}
+        initial='hidden'
+        animate='show'
+        onClick={click}
+    >
+        <div className='meteor__question'>
+            <h3>{quiz}
+            </h3>
+        </div>
+    </motion.div>
     )
 }
 
