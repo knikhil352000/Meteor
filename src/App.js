@@ -1,15 +1,11 @@
 import './App.css';
-import React,{ useEffect, useRef, useState } from 'react';
 import Meteor from './Meteor';
-function App() {
-  const question = ["What is DBMS", "What is PostgreSQL", "What is an API"];
+console.log('heoo')
+const App = () => {
+  
   return (
     <div className="app">
-      {
-        question.map((quiz) => (
-          <Meteor quiz={quiz}/>
-        ))
-      }
+      <Meteor/>
       <div className='app__image'>
       </div>
     </div>
