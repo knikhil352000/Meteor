@@ -19,3 +19,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.app__form {
+  width:  20rem;
+  height: 2.5rem;
+  z-index:3; 
+}
+
+input {
+  font-size: 150% !important;
+  width: inherit;
+  height: inherit;
+}
