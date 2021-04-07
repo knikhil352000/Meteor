@@ -21,13 +21,21 @@
 }
 
 .app__form {
-  width:  20rem;
-  height: 2.5rem;
   z-index:3; 
 }
 
 input {
   font-size: 150% !important;
-  width: inherit;
+  width: 20rem;
   height: inherit;
 }
+
+.app__options {
+  width: 20rem;
+  height: 2.5rem;
+  background-color: white;
+  margin: 1rem auto 1rem auto;
+  padding-left: 1rem;
+  border-radius: 1rem;
+}
+
