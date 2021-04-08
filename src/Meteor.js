@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import './Meteor.css'
-const Meteor = ({setAnswer, setQuiz, question, quiz}) => {
+const Meteor = ({ setQuiz, question, quiz}) => {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
     const [index, setIndex] = useState(0)
@@ -13,7 +13,6 @@ const Meteor = ({setAnswer, setQuiz, question, quiz}) => {
             setDuration(8000);
             let i = index === 0 ? 0 : index - 1;
             setQuiz(question[i])
-            setAnswer(question[i].a);
         }, duration)
         if(index > question.length) {
             clearInterval(myTimer)
