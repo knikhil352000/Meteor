@@ -4,8 +4,8 @@ import './Meteor.css'
 const Meteor = ({ setQuiz, question, quiz}) => {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
+    const xValue = [-windowWidth / 4, -windowWidth / 5, windowWidth / 4, windowWidth / 5];
     const [index, setIndex] = useState(0)
-    const xValue = [-windowWidth / 3, -windowWidth / 4, -windowWidth / 5, windowWidth / 3, windowWidth / 4, windowWidth / 5, 0];
     const [duration, setDuration] = useState(0);
     useEffect(() => {
         const myTimer = setInterval(() => {

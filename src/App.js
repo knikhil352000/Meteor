@@ -2,6 +2,7 @@ import {  useEffect, useState } from 'react';
 import './App.css';
 import Check from './Check';
 import Meteor from './Meteor';
+import NewMeteor from './NewMeteor';
 const App = () => {
   const question = [
     {
@@ -23,25 +24,7 @@ const App = () => {
         q: "Small structure within a cell that performs a specific function is the ______",
         a: "organelle"
     },
-    {
-        type: "MCQ",
-        q: "The molecule used by cells to store genetic information is _____",
-        a: "DNA",
-        optionA: "DNA",
-        optionB: "Nucleus",
-        optionC: "Cell",
-        optionD: "Organelle",
-    },
-    {
-        type: "Fill_In_The_Blanks",
-        q: "The _____ is surrounded by a membrane, contains the cell's DNA, and acts as the control center",
-        a: "nucleus"
-    },
-    {
-        type: "Fill_In_The_Blanks",
-        q: "Small structure within a cell that performs a specific function is the ______",
-        a: "organelle"
-    }
+    
   ];
   const [input, setInput] = useState("");
   const [check, setCheck] = useState("non");
@@ -71,10 +54,10 @@ const App = () => {
   }
   return (
     <div className="app">
-      <Meteor setQuiz={setQuiz} question={question} quiz={quiz}/>
+      <NewMeteor setQuiz={setQuiz} question={question} quiz={quiz}/>
       <div className='app__image'>
       </div>
-      <form className="app__form" onSubmit={submitAnswer}>
+      {/* <form className="app__form" onSubmit={submitAnswer}>
         {
           quiz.type !== "MCQ" ? (
               <input type="text" autoFocus onChange={(e) => setInput(e.target.value)} value={input}/>
@@ -98,8 +81,8 @@ const App = () => {
       </form>
       {
         (check !== "non") && <Check check={check}/>
-      }
-    </div>
+      }*/}
+    </div> 
   )
 }
 export default App;
