@@ -1,0 +1,18 @@
+.startpage{
+    display: flex;
+    justify-content: center;
+    z-index: 4;
+}
+.startpage__button {
+    position: absolute;
+    display: flex;
+    bottom: 10rem;
+    width: 12rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #7dd;
+    font-size: 140%;
+    color: #303545;
+    border-radius: 1rem;
+}

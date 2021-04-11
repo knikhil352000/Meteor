@@ -1,8 +1,13 @@
+import { motion, useAnimation } from 'framer-motion';
 import {  useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import './App.css';
+import './Meteor.css'
 import Check from './Check';
 import Meteor from './Meteor';
 import NewMeteor from './NewMeteor';
+import Header from './Header';
+import StartPage from './StartPage';
 const App = () => {
   const question = [
     {
@@ -26,35 +31,70 @@ const App = () => {
     },
     
   ];
-  const [input, setInput] = useState("");
-  const [check, setCheck] = useState("non");
-  const [quiz, setQuiz] = useState(question[0]);
-  const [options, setOptions] = useState("");
-  useEffect(() => {
-    if(options.toLowerCase() === quiz.a.toLowerCase()) {
-      setCheck("green");
-    } else {
-      setCheck("red")
-    }
-    setTimeout(() => {
-      setCheck("non")
-    }, 1400)
-  }, [options]) // eslint-disable-line react-hooks/exhaustive-deps
-  const submitAnswer = (e) => {
-    e.preventDefault();
-    if(input.toLowerCase() === quiz.a.toLowerCase()) {
-      setCheck("green");
-    } else {
-      setCheck("red")
-    }
-    setInput("");
-    setTimeout(() => {
-      setCheck("non")
-    }, 1400)
-  }
+  // const control = useAnimation(); 
+  // const [ref, inView] = useInView();
+  // const [showAnimation, setShowAnimation] = useState(true);
+  // const windowHeight = window.innerHeight;
+  // const windowWidth = window.innerWidth;
+  // const xValue = [-windowWidth / 4, -windowWidth / 5, windowWidth / 4, windowWidth / 5];
+  // console.log(control.isAnimating());
+  // const startAnimation = () => {
+  //     setShowAnimation(!showAnimation);
+  //     if(showAnimation) {
+  //         control.start({
+  //             opacity: 1,
+  //             y: 200,
+  //             transition: {
+  //                 duration: 3,
+  //                 ease: 'linear',
+  //             },
+  //         })
+  //     }
+  //     if(!showAnimation) {
+  //         control.start({
+  //             y: windowHeight - 320,
+  //             transition: {
+  //                 duration: 0
+  //             }
+  //         })
+  //     }
+      
+  // }
+  // useEffect(() => {
+  //   if(options.toLowerCase() === quiz.a.toLowerCase()) {
+  //     setCheck("green");
+  //   } else {
+  //     setCheck("red")
+  //   }
+  //   setTimeout(() => {
+  //     setCheck("non")
+  //   }, 1400)
+  // }, [options]) // eslint-disable-line react-hooks/exhaustive-deps
+  // const submitAnswer = (e) => {
+  //   e.preventDefault();
+  //   if(input.toLowerCase() === quiz.a.toLowerCase()) {
+  //     setCheck("green");
+  //   } else {
+  //     setCheck("red")
+  //   }
+  //   setInput("");
+  //   setTimeout(() => {
+  //     setCheck("non")
+  //   }, 1400)
+  // }
   return (
     <div className="app">
-      <NewMeteor setQuiz={setQuiz} question={question} quiz={quiz}/>
+      <Header />
+      <StartPage />
+      {/* <motion.div 
+            className='meteor'
+            animate={control}
+            onClick={startAnimation}
+            ref={ref}
+        >
+            <div className='meteor__question'>
+            </div>
+        </motion.div> */}
       <div className='app__image'>
       </div>
       {/* <form className="app__form" onSubmit={submitAnswer}>
