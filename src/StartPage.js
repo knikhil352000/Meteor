@@ -1,6 +1,6 @@
 import React from 'react'
 import './StartPage.css'
-const StartPage = () => {
+const StartPage = ({setStart}) => {
     return (
         <div className="startpage">
             <div className='startpage__image'>
@@ -10,7 +10,7 @@ const StartPage = () => {
                 <img src="https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/BlueLargeAsteroid@2x.848b4a45b4afee5.png" height={350} alt=""/>
                 <img src="https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/BlueLargeAsteroid@2x.848b4a45b4afee5.png" height={400} alt=""/>
             </div>
-            <div className="startpage__button">
+            <div className="startpage__button" onClick={() => setStart(true)}>
                 <h3>Get Started</h3>
             </div>
         </div>

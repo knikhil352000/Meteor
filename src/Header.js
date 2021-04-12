@@ -1,15 +1,19 @@
 import React from 'react'
 import './Header.css'
-const Header = () => {
+const Header = ({start, setStart, check, score}) => {
     return (
         <div className='header'> 
             <div className='header__score'>
-                <h3>SCORE: <span>10</span></h3>
+                <h3>SCORE: <span>{score}</span></h3>
             </div>
-            <div className='header__indicator'>
-                <h3>Wrong Answer</h3>
+            <div className='header__indicator' style={{backgroundColor: check !== "non" ? check : 'transparent'}}>
+                {
+                    check === "non" ? <h3>GRAVITY</h3> : check === "green" ? <h3>CORRECT</h3> : <h3>WRONG</h3>
+                }
             </div>
-            <button>Exit</button>
+            {
+                start ? <button onClick={() => setStart(false)}>Exit</button> : <img src="https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/IntroRedAsteroid.0c200695fa93202.png" height={60} alt=""/>
+            }
         </div>
     )
 }

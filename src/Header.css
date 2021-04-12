@@ -10,4 +10,15 @@
     box-sizing: border-box;
     position: absolute;
     top: 0;
+    background-color: #13141b;
+    color: white;
+    z-index: 4;
+}
+
+.header__indicator {
+    width: 20rem;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
