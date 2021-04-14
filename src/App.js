@@ -5,6 +5,7 @@ import './App.css';
 import './Meteor.css'
 import Header from './Header';
 import StartPage from './StartPage';
+import Gameover from './Gameover';
 const App = () => {
   const question = [
     {
@@ -28,9 +29,8 @@ const App = () => {
     },
   ];
   const [start, setStart] = useState(false);
-  const control = useAnimation(); 
+  const control = useAnimation();
   const [ref, inView] = useInView();
-  const [showAnimation, setShowAnimation] = useState(true);
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState("");
   const [showMeteor, setShowMeteor] = useState(true);
@@ -39,30 +39,30 @@ const App = () => {
   const windowWidth = window.innerWidth;
   const xValue = [-windowWidth / 4, -windowWidth / 5, windowWidth / 4, windowWidth / 5];
   useEffect(() => {
-    if(inView) {
+    if(1 && inView) {
       control.start({
         y: window.innerHeight + 350,
         transition: {
-          duration: 15,
+          duration: question[index - 1].q.length / 3,
           ease: "linear"
         }
       })
     }
-    if(!inView) {
+    if (!inView) {
       setIndex(prev => prev + 1);
       control.start({
         x: xValue[Math.floor(Math.random() * xValue.length)],
-        y: -450,
+        y: -350,
         transition: {
           duration: 0,
           ease: 'linear'
         }
       })
     }
-  },[inView])
+  }, [inView])
   const checkMCQ = (e) => {
     console.log(e);
-    if(e.target.dataset.options.toLowerCase() === question[index - 1].a.toLowerCase()) {
+    if (e.target.dataset.options.toLowerCase() === question[index - 1].a.toLowerCase()) {
       setScore(prev => prev + 4);
       setCheck("green")
     } else {
@@ -77,7 +77,7 @@ const App = () => {
   }
   const submitAnswer = (e) => {
     e.preventDefault();
-    if(input.toLowerCase() === question[index - 1].a.toLowerCase()) {
+    if (input.toLowerCase() === question[index - 1].a.toLowerCase()) {
       setScore(prev => prev + 4);
       setCheck("green")
     } else {
@@ -92,50 +92,53 @@ const App = () => {
   }
   return (
     <div className="app">
-      <Header start={start} setStart={setStart} check={check} score={score}/>
+      <Header start={start} setStart={setStart} check={check} score={score} />
       {
         !start ? (
-          <StartPage setStart={setStart}/>
+          <StartPage setStart={setStart} />
         ) : (
           <>
             {
               showMeteor && <motion.div
-              className='meteor'
-              animate={control}
-              ref={ref}
-              initial={{y: -350, x: -350}}
-            >
-              <div className='meteor__question'>
-                {
-                  question[index - 1] ? <h3>{question[index - 1].q}</h3> : <h3>GAME OVER</h3>
-                }
-              </div>
-            </motion.div>
+                className='meteor'
+                animate={control}
+                ref={ref}
+                initial={{ y: -350, x: xValue[Math.floor(Math.random() * xValue.length)]}}
+              >
+                <div className='meteor__question'>
+                  {
+                    question[index - 1] ? <h3>{question[index - 1].q}</h3> : <h3>GAME OVER</h3>
+                  }
+                </div>
+              </motion.div>
             }
             <div className='app__image'>
             </div>
-            <form className="app__form" onSubmit={submitAnswer}>
+            {question[index - 1] && <form className="app__form" onSubmit={submitAnswer}>
               {
                 question[index - 1].type !== "MCQ" ? (
                   <input type="text" autoFocus onChange={(e) => setInput(e.target.value)} value={input} />
                 ) : (
                   <div className="app__mcq">
                     <div className="app__options" data-options={question[index - 1].optionA} onClick={checkMCQ}>
-                      {inView && `${question[index - 1].optionA}` }
+                      {inView && `${question[index - 1].optionA}`}
                     </div>
                     <div className="app__options" data-options={question[index - 1].optionB} onClick={checkMCQ} >
-                      {inView && `${question[index - 1].optionB}` }
+                      {inView && `${question[index - 1].optionB}`}
                     </div>
                     <div className="app__options" data-options={question[index - 1].optionC} onClick={checkMCQ}>
-                      {inView && `${question[index - 1].optionC}` }
+                      {inView && `${question[index - 1].optionC}`}
                     </div>
                     <div className="app__options" data-options={question[index - 1].optionD} onClick={checkMCQ}>
-                      {inView && `${question[index - 1].optionD}` }
+                      {inView && `${question[index - 1].optionD}`}
                     </div>
                   </div>
                 )
               }
-            </form>
+            </form>}
+            {
+              question[index - 1] ? true : <Gameover score={score} />
+            }
           </>
         )
       }
