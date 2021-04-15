@@ -12,7 +12,7 @@ const Header = ({start, setStart, check, score}) => {
                 }
             </div>
             {
-                start ? <button onClick={() => setStart(false)}>Exit</button> : <img src="https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/IntroRedAsteroid.0c200695fa93202.png" height={60} alt=""/>
+                start ? <button className="header__exit" onClick={() => setStart(false)}>Exit</button> : <img src="https://assets.quizlet.com/a/j/dist/i/gravity/asteroids/IntroRedAsteroid.0c200695fa93202.png" height={60} alt=""/>
             }
         </div>
     )
